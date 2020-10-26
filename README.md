@@ -2,7 +2,7 @@
 
 ## Set up
 
-* Create a Gemfile
+### Create a Gemfile
 
 ```shell
 bundle init
@@ -17,3 +17,9 @@ ruby -v
 * Open Gemfile
 
 Add ruby version after the `git_source` line, e.g. `ruby '2.7.0'`
+
+* Run bundle to install any potentially missing dependencies (automatically generates a Gemfile.lock)
+
+```shell
+bundle
+```
