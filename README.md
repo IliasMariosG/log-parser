@@ -28,4 +28,6 @@ bundle
 
 ```shell
 rspec --init
+cd spec/
+touch log_parser_spec.rb
 ```
