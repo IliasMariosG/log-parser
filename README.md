@@ -69,4 +69,6 @@ $ ruby lib/log_parser.rb webserver_sample_copy.log
 "webserver_sample_copy.log"
 ```
 
-TODO: Add screenshot
+* Screenshot
+
+![Screenshot 2020-10-27 at 12 48 09 AM](https://user-images.githubusercontent.com/57366310/97237381-a81c9480-17ef-11eb-99e1-222d2a8d65c6.png)
