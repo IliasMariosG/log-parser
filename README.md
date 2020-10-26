@@ -31,3 +31,13 @@ rspec --init
 cd spec/
 touch log_parser_spec.rb
 ```
+
+### Add SimpleCov
+
+* Open Gemfile and add
+
+```ruby
+gem 'simplecov'
+```
+
+* Run `bundle install`
