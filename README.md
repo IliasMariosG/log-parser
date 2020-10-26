@@ -41,3 +41,13 @@ gem 'simplecov'
 ```
 
 * Run `bundle install`
+
+### Add Rubocop
+
+* Open Gemfile and add
+
+```ruby
+gem 'rubocop'
+```
+
+* Run `bundle install`
