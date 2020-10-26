@@ -51,3 +51,22 @@ gem 'rubocop'
 ```
 
 * Run `bundle install`
+
+## Run
+
+* This is a command line app and it has to be run from the command line. This is possible via the addition of the following block of code in the `log_parser.rb` file
+
+```ruby
+if $PROGRAM_NAME == __FILE__
+  LogParser.new(ARGV[0]).read_file
+end
+```
+
+* In the terminal
+
+```shell
+$ ruby lib/log_parser.rb webserver_sample_copy.log
+"webserver_sample_copy.log"
+```
+
+TODO: Add screenshot
