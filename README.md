@@ -23,3 +23,9 @@ Add ruby version after the `git_source` line, e.g. `ruby '2.7.0'`
 ```shell
 bundle
 ```
+
+### Create RSpec conventional files
+
+```shell
+rspec --init
+```
