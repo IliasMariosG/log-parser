@@ -26,11 +26,7 @@ class LogParser
       page_ip = row.first # e.g. first row "/help_page/1 126.318.035.038"
       page = page_ip.split(' ').first # e.g. "/help_page/1"
       ip = page_ip.split(' ').last
-      if collection.key?(page)
-        collection[page] << ip
-      else
-        collection[page] = [ip]
-      end
+      collection.key?(page) ? collection[page] << ip : collection[page] = [ip]
     end
     collection # hash
   end
