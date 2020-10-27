@@ -72,3 +72,7 @@ $ ruby lib/log_parser.rb webserver_sample_copy.log
 * Screenshot
 
 ![Screenshot 2020-10-27 at 12 48 09 AM](https://user-images.githubusercontent.com/57366310/97237381-a81c9480-17ef-11eb-99e1-222d2a8d65c6.png)
+
+* improve without the need for command `ruby`
+
+![Screenshot 2020-10-27 at 12 21 23 PM](https://user-images.githubusercontent.com/57366310/97289426-d5009400-184f-11eb-91f1-e598f523cb70.png)
