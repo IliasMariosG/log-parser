@@ -13,10 +13,10 @@ RSpec.describe LogParser do
     end
   end
   describe '#read_file' do
-    file_path = "data/webserver_sample_1_page.log"
+    file_path = "data/webserver_sample_2_pages.log"
     log_parser = LogParser.new(file_path)
-    it 'returns one array of one row when it reads the file in CSV format' do
-      expected_output = [['/help_page/1 126.318.035.038']]
+    it 'returns one array of two rows (2 subarrays) when it reads the file in CSV format' do
+      expected_output = [['/help_page/1 126.318.035.038'], ['/contact 184.123.665.067']]
       expect(log_parser.read_file).to eq(expected_output)
     end
   end

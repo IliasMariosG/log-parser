@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+
 # frozen_string_literal: true
 require 'csv'
 
@@ -17,3 +17,4 @@ end
 LogParser.new(ARGV[0]).read_file if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
 
 # LogParser.new('data/webserver_sample_1_page.log').read_file
+# LogParser.new('data/webserver_sample_2_pages.log').read_file
