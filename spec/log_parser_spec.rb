@@ -13,7 +13,7 @@ RSpec.describe LogParser do
     end
   end
   describe '#read_file' do
-    file_path = "data/webserver_sample.log"
+    file_path = 'data/webserver_sample.log'
     log_parser = LogParser.new(file_path)
     it 'returns one array of 8 rows (8 subarrays) when it reads the file in CSV format' do
       expected_output = [['/help_page/1 126.318.035.038'], ['/contact 184.123.665.067'], ['/home 184.123.665.067'],\
@@ -23,7 +23,7 @@ RSpec.describe LogParser do
     end
   end
   describe '#parse_most_visits' do
-    file_path = "data/webserver_sample.log"
+    file_path = 'data/webserver_sample.log'
     log_parser = LogParser.new(file_path)
     it 'returns a hash, each value being an array for each row in ascending order' do
       expected_output = { '/help_page/1' =>
