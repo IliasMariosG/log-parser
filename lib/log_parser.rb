@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 require 'csv'
 
 # LogParser class
@@ -20,7 +21,6 @@ class LogParser
   end
 
   def parse_most_visits
-    #  @file.join(' ')
     collection = {}
       CSV.foreach(@file_path) do |row|
         page_ip = row.first # e.g. first row "/help_page/1 126.318.035.038"
