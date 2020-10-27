@@ -22,4 +22,16 @@ RSpec.describe LogParser do
       expect(log_parser.read_file).to eq(expected_output)
     end
   end
+  describe '#parse_most_visits' do
+    file_path = "data/webserver_sample.log"
+    log_parser = LogParser.new(file_path)
+    it 'returns a hash, each value being an array for each row in ascending order' do
+      expected_output = { '/help_page/1' =>
+                          ['126.318.035.038', '929.398.951.889', '722.247.931.582', '646.865.545.408'],\
+                          '/contact' => ['184.123.665.067'], '/home' => ['184.123.665.067'],\
+                          '/about/2' => ['444.701.448.104'],\
+                          '/index' => ['444.701.448.104'], '/about' => ['061.945.150.735'] }
+      expect(log_parser.parse_most_visits).to eq(expected_output)
+    end
+  end
 end
