@@ -30,6 +30,13 @@ class LogParser
     end
     collection # hash
   end
+
+  def descending_order(collection)
+    page_visits = collection.each { |page, ip| collection[page] = ip.size }
+    ascending_order_ips = page_visits.sort_by { |_, ip| ip } # array
+    descending_order_ips = ascending_order_ips.reverse
+    descending_order_ips
+  end
 end
 
 LogParser.new(ARGV[0]).print_file if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
