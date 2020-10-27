@@ -33,8 +33,7 @@ class LogParser
 
   def descending_order(collection)
     page_visits = collection.each { |page, ip| collection[page] = ip.size }
-    descending_order_ips = page_visits.sort_by { |_, ip| ip }.reverse # array
-    descending_order_ips
+    page_visits.sort_by { |_, ip| ip }.reverse # array
   end
 end
 
