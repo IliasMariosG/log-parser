@@ -53,4 +53,19 @@ RSpec.describe LogParser do
       expect(log_parser.descending_order(input)).to eq(expected_output)
     end
   end
+  describe '#format_message' do
+    file_path = 'data/webserver_sample.log'
+    log_parser = LogParser.new(file_path)
+    it 'returns a formatted message' do
+      input = [['/help_page/1', 4],\
+               ['/about', 1],\
+               ['/index', 1],\
+               ['/about/2', 1],\
+               ['/home', 1],\
+               ['/contact', 1]]
+      expected_output = '/help_page/1 4 visits, /about 1 visit, /index 1 visit, /about/2 1 visit, /home 1 visit, '\
+                        '/contact 1 visit'
+      expect(log_parser.format_message(input)).to eq(expected_output)
+    end
+  end
 end

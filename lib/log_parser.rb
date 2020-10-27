@@ -5,17 +5,13 @@ require 'csv'
 
 # LogParser class
 class LogParser
+  attr_reader :collection, :formatted_message_string
+
   def initialize(file_path)
     @file_path = file_path
   end
 
   # It reads the file and returns an array of rows
-
-  def print_file
-    read_file
-    parse_most_visits
-  end
-
   def read_file
     CSV.read(@file_path)
   end
@@ -35,9 +31,17 @@ class LogParser
     page_visits = collection.each { |page, ip| collection[page] = ip.size }
     page_visits.sort_by { |_, ip| ip }.reverse # array
   end
+
+  def format_message(collection)
+    formatted_message = []
+    collection.each do |page|
+      formatted_message << (page[1] > 1 ? "#{page[0]} #{page[1]} visits" : "#{page[0]} #{page[1]} visit")
+    end
+    p formatted_message.join(', ')
+  end
 end
 
-LogParser.new(ARGV[0]).print_file if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
-
-# LogParser.new('data/webserver_sample_1_page.log').read_file
-# LogParser.new('data/webserver_sample_2_pages.log').read_file
+if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
+  LogParser.new(ARGV[0]).format_message([['/help_page/1', 4], ['/about', 1], ['/index', 1], ['/about/2', 1],\
+                                         ['/home', 1], ['/contact', 1]])
+end
