@@ -1,8 +1,8 @@
-
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 require 'csv'
 
-# LogParsr class
+# LogParser class
 class LogParser
   def initialize(file_path)
     @file_path = file_path
