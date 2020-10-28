@@ -17,8 +17,9 @@ class LogParser
   end
 
   def parse_most_visits
+    file_read = read_file()
     collection = {}
-    CSV.foreach(@file_path) do |row|
+    file_read = CSV.foreach(@file_path) do |row|
       page_ip = row.first # e.g. first row "/help_page/1 126.318.035.038"
       page = page_ip.split(' ').first # e.g. "/help_page/1"
       ip = page_ip.split(' ').last
@@ -27,21 +28,30 @@ class LogParser
     collection # hash
   end
 
-  def descending_order(collection)
+  def descending_order
+    collection = parse_most_visits()
     page_visits = collection.each { |page, ip| collection[page] = ip.size }
     page_visits.sort_by { |_, ip| ip }.reverse # array
   end
 
-  def format_message(collection)
+  def format_message
+    collection = descending_order()
     formatted_message = []
     collection.each do |page|
       formatted_message << (page[1] > 1 ? "#{page[0]} #{page[1]} visits" : "#{page[0]} #{page[1]} visit")
     end
-    p formatted_message.join(', ')
+    formatted_message_string = formatted_message.join(', ')
   end
+
+  d
 end
 
 if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
-  LogParser.new(ARGV[0]).format_message([['/help_page/1', 4], ['/about', 1], ['/index', 1], ['/about/2', 1],\
-                                         ['/home', 1], ['/contact', 1]])
+  LogParser.new(ARGV[0]).print_file
 end
+
+# LogParser.new('data/webserver_sample.log').read_file
+# LogParser.new('data/webserver_sample.log').parse_most_visits
+# LogParser.new('data/webserver_sample.log').descending_order
+# LogParser.new('data/webserver_sample.log').format_message
+# LogParser.new('data/webserver_sample.log').print_file
