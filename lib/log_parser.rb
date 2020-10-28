@@ -43,7 +43,9 @@ class LogParser
     formatted_message_string = formatted_message.join(', ')
   end
 
-  d
+  def print_file
+    p format_message()
+  end
 end
 
 if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
