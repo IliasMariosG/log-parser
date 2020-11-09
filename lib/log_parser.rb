@@ -5,7 +5,7 @@ require 'csv'
 
 # LogParser class
 class LogParser
-  attr_reader :collection, :formatted_message_string
+  attr_reader :collection
 
   def initialize(file_path)
     @file_path = file_path
@@ -18,14 +18,12 @@ class LogParser
 
   def parse_most_visits
     file_read = read_file
-    collection = {}
-    file_read = CSV.foreach(@file_path) do |row|
+    file_read.each_with_object({}) do |row, hash_collection|
       page_ip = row.first # e.g. first row "/help_page/1 126.318.035.038"
       page = page_ip.split(' ').first # e.g. "/help_page/1"
       ip = page_ip.split(' ').last
-      collection.key?(page) ? collection[page] << ip : collection[page] = [ip]
+      hash_collection.key?(page) ? hash_collection[page] << ip : hash_collection[page] = [ip]
     end
-    collection # hash
   end
 
   def descending_order
@@ -36,11 +34,9 @@ class LogParser
 
   def format_message
     collection = descending_order
-    formatted_message = []
-    collection.each do |page|
+    collection.each_with_object([]) do |page, formatted_message|
       formatted_message << (page[1] > 1 ? "#{page[0]} #{page[1]} visits" : "#{page[0]} #{page[1]} visit")
-    end
-    formatted_message_string = formatted_message.join(', ')
+    end.join(', ')
   end
 
   def print_file
@@ -48,9 +44,7 @@ class LogParser
   end
 end
 
-if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
-  LogParser.new(ARGV[0]).print_file
-end
+LogParser.new(ARGV[0]).print_file if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
 
 # LogParser.new('data/webserver_sample.log').read_file
 # LogParser.new('data/webserver_sample.log').parse_most_visits
