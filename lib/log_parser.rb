@@ -45,9 +45,3 @@ class LogParser
 end
 
 LogParser.new(ARGV[0]).print_file if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
-
-# LogParser.new('data/webserver_sample.log').read_file
-# LogParser.new('data/webserver_sample.log').parse_most_visits
-# LogParser.new('data/webserver_sample.log').descending_order
-# LogParser.new('data/webserver_sample.log').format_message
-# LogParser.new('data/webserver_sample.log').print_file
