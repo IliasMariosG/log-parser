@@ -17,7 +17,7 @@ class LogParser
   end
 
   def parse_most_visits
-    file_read = read_file()
+    file_read = read_file
     collection = {}
     file_read = CSV.foreach(@file_path) do |row|
       page_ip = row.first # e.g. first row "/help_page/1 126.318.035.038"
@@ -29,13 +29,13 @@ class LogParser
   end
 
   def descending_order
-    collection = parse_most_visits()
+    collection = parse_most_visits
     page_visits = collection.each { |page, ip| collection[page] = ip.size }
     page_visits.sort_by { |_, ip| ip }.reverse # array
   end
 
   def format_message
-    collection = descending_order()
+    collection = descending_order
     formatted_message = []
     collection.each do |page|
       formatted_message << (page[1] > 1 ? "#{page[0]} #{page[1]} visits" : "#{page[0]} #{page[1]} visit")
@@ -44,7 +44,7 @@ class LogParser
   end
 
   def print_file
-    p format_message()
+    p format_message
   end
 end
 
