@@ -5,7 +5,7 @@ require 'csv'
 
 # LogParser class
 class LogParser
-  attr_reader :collection, :formatted_message_string
+  attr_reader :collection
 
   def initialize(file_path)
     @file_path = file_path
