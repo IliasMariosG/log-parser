@@ -35,11 +35,9 @@ class LogParser
 
   def format_message
     collection = descending_order
-    formatted_message = []
-    collection.each do |page|
+    collection.each_with_object([]) do |page, formatted_message|
       formatted_message << (page[1] > 1 ? "#{page[0]} #{page[1]} visits" : "#{page[0]} #{page[1]} visit")
-    end
-    formatted_message_string = formatted_message.join(', ')
+    end.join(', ')
   end
 
   def print_file
