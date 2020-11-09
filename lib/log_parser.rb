@@ -17,8 +17,9 @@ class LogParser
   end
 
   def parse_most_visits
+    file_read = read_file
     collection = {}
-    CSV.foreach(@file_path) do |row|
+    file_read.each do |row|
       page_ip = row.first # e.g. first row "/help_page/1 126.318.035.038"
       page = page_ip.split(' ').first # e.g. "/help_page/1"
       ip = page_ip.split(' ').last
