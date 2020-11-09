@@ -18,12 +18,11 @@ class LogParser
 
   def parse_most_visits
     file_read = read_file
-    collection = {}
-    file_read.each do |row|
+    collection = file_read.each_with_object({}) do |row, hash_collection|
       page_ip = row.first # e.g. first row "/help_page/1 126.318.035.038"
       page = page_ip.split(' ').first # e.g. "/help_page/1"
       ip = page_ip.split(' ').last
-      collection.key?(page) ? collection[page] << ip : collection[page] = [ip]
+      hash_collection.key?(page) ? hash_collection[page] << ip : hash_collection[page] = [ip]
     end
     collection # hash
   end
