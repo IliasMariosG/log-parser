@@ -45,9 +45,7 @@ class LogParser
   end
 end
 
-if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
-  LogParser.new(ARGV[0]).print_file
-end
+LogParser.new(ARGV[0]).print_file if $PROGRAM_NAME == __FILE__ # if this is the main file being used...
 
 # LogParser.new('data/webserver_sample.log').read_file
 # LogParser.new('data/webserver_sample.log').parse_most_visits
